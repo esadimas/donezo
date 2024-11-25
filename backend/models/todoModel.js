@@ -11,12 +11,13 @@ const todoSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    default: false,
+    enum: ["pending", "progress", "done"], 
+    default: "pending", 
   },
   dueDate: {
     type: Date,
     required: false,
-   },
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -30,7 +31,7 @@ const todoSchema = new mongoose.Schema({
     ref: "User",
     required: true,
   },
-});
+}, {timestamps: true});
 
 // Middleware untuk mengupdate timestamp otomatis
 todoSchema.pre("save", function (next) {
