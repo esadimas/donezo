@@ -7,6 +7,7 @@ const cors = require("cors");
 
 const connectDB = require("./config/mongodb");
 const { registerUser, loginUser, userProfile } = require("./controllers/userController");
+const { getAllTodo, createTodo  } = require("./controllers/todoController");
 const { protect } = require("./middleware/authMiddleware");
 
 // connect to mongodb
@@ -20,6 +21,9 @@ app.use(cors());
 app.post("/api/auth/register", registerUser);
 app.post("/api/auth/login", loginUser);
 app.get("/api/users/profile", protect, userProfile);
+
+app.get("/api/todos", protect, getAllTodo)
+app.post("/api/todos", protect, createTodo)
 
 
 
