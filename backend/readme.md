@@ -98,37 +98,6 @@ Response:
 - Method: GET
 - Description: Mengambil data profil pengguna berdasarkan token autentikasi. Endpoint ini hanya mengembalikan data pengguna yang sedang login.
 
-Authorization:
-
-- Endpoint ini membutuhkan Bearer Token.
-- Token harus dikirim melalui header sebagai berikut:
-
-  ```http
-  Authorization: Bearer <token>
-  ```
-
-### 4. Get All To-Dos
-
-- URL: /api/todos
-- Method: GET
-- Description: Mengambil semua data To-Do.
-- Response Example:
-
-    ```json
-    [
-      {
-        "_id": "64c9e5b9f2d35c087c8e5a2b",
-        "text": "Learn Vue.js",
-        "completed": false
-      },
-      {
-        "_id": "64c9e5d4f2d35c087c8e5a2c",
-        "text": "Build To-Do App",
-        "completed": true
-      }
-    ]
-    ```
-
   Response:
 
   - 200 OK
@@ -155,6 +124,45 @@ Authorization:
     }
     ```
 
+Authorization:
+
+- Endpoint ini membutuhkan Bearer Token.
+- Token harus dikirim melalui header sebagai berikut:
+
+  ```http
+  Authorization: Bearer <token>
+  ```
+
+### 4. Get All To-Dos
+
+- URL: /api/todos
+- Method: GET
+- Description: Mengambil semua data To-Do.
+- Response Example:
+
+    ```json
+    [
+      {
+        "userId": "64c9e5b9f2d35c087c8e5a2b",
+        "title": "Learn Vue.js",
+        "status": false,
+        "description": "lorem ipsum dolor sit amet...",
+        "dueDate": "10-10-2030",
+        "createdAt": "09-09-2029",
+        "updatedAt": "09-10-2029"
+      },
+      {
+        "userId": "64c9e5d4f2d35c087c8e5a2c",
+        "title": "Build To-Do App",
+        "status": false,
+        "description": "lorem ipsum dolor sit amet...",
+        "dueDate": "10-10-2030",
+        "createdAt": "09-09-2029",
+        "updatedAt": "09-10-2029"
+      }
+    ]
+    ```
+
 ### 5. Create a To-Do
 
 - URL: /api/todos
@@ -164,7 +172,10 @@ Authorization:
 
     ```json
     {
-      "text": "Learn Node.js"
+      "userId": "64c9e5b9f2d35c087c8e5a2b",
+      "title": "Learn Node.js",
+      "description": "Belajar dasar-dasar Node.js",
+      "dueDate": "2030-10-10"
     }
     ```
 
@@ -173,8 +184,13 @@ Authorization:
     ```json
     {
       "_id": "64c9e6b7f2d35c087c8e5a2d",
-      "text": "Learn Node.js",
-      "completed": false
+      "userId": "64c9e5b9f2d35c087c8e5a2b",
+      "title": "Learn Node.js",
+      "description": "Belajar dasar-dasar Node.js",
+      "dueDate": "2030-10-10",
+      "status": false,
+      "createdAt": "2024-11-25T12:00:00.000Z",
+      "updatedAt": "2024-11-25T12:00:00.000Z"
     }
     ```
 
@@ -189,8 +205,10 @@ Authorization:
 
     ```json
     {
-      "text": "Learn Express.js",
-      "completed": true
+      "title": "Learn Advanced Node.js",
+      "description": "Pelajari fitur lanjutan Node.js",
+      "dueDate": "2030-12-01",
+      "status": true
     }
     ```
 
@@ -199,8 +217,13 @@ Authorization:
     ```json
     {
       "_id": "64c9e6b7f2d35c087c8e5a2d",
-      "text": "Learn Express.js",
-      "completed": true
+      "userId": "64c9e5b9f2d35c087c8e5a2b",
+      "title": "Learn Advanced Node.js",
+      "description": "Pelajari fitur lanjutan Node.js",
+      "dueDate": "2030-12-01",
+      "status": true,
+      "createdAt": "2024-11-25T12:00:00.000Z",
+      "updatedAt": "2024-11-25T14:00:00.000Z"
     }
     ```
 
